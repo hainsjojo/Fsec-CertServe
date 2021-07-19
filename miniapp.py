@@ -7,9 +7,9 @@ import re
 #DEBUG = True
 app = Flask(__name__)
 app.config.from_object(__name__)
-app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
+app.config['SECRET_KEY'] = 'YOURKEY'
 
-
+IP = '127.0.0.1' # Change this
 cert_file = "null"
 
 
@@ -35,20 +35,11 @@ class ReusableForm(Form):
                     print(line)
                     cert_file = line
 
-            #def lines_that_contain(string, fp):
-            #    return [line for line in fp if string in line]
-            #with open("filename.txt", "r") as fp:
-            #    for line in lines_that_contain(cname, fp):
-            #        print(line)
-
-            
         if form.validate():
-            # Save the comment here.
-            # flash('Hello ' + name)
             try:
                 print("Cert " + cert_file)
                 flash('Download your cert here: ')
-                download = 'http://207.148.72.97/certs-file/' + cert_file
+                download = 'http://'+IP+'/certs-file/' + cert_file
 
             except:
                 download = ""
